@@ -16,23 +16,23 @@ class Footer extends Component{
 			<ul>
 	        	<li><NavLink to='/home'  activeClassName={css.iHome}>
 	        	<i className={css.i_home}></i>
-	        	<span>home</span>
+	        	<span>首页</span>
 	        	</NavLink></li>
 	        	<li><NavLink to='/classfi'  activeClassName={css.iClassfi}>
 	        	<i className={css.i_classfi}></i>
-	        	<span>classfi</span>
+	        	<span>分类</span>
 	        	</NavLink></li>
 	        	<li><NavLink to='/eat'  activeClassName={css.iEat}>
 	        	<i className={css.i_eat}></i>
-	        	<span>eat</span>
+	        	<span>吃饭吧</span>
 	        	</NavLink></li>
 	        	<li><NavLink to='/cart'  activeClassName={css.iCart}>
 	        	<i className={css.i_cart}></i>
-	        	<span>cart</span>
+	        	<span>购物车</span>
 	        	</NavLink></li>
 	        	<li><NavLink to='/my'  activeClassName={css.iMy}>
 	        	<i className={css.i_my}></i>
-	        	<span>my</span>
+	        	<span>我的易果</span>
 	        	</NavLink></li>
 	        </ul>
 			</footer>

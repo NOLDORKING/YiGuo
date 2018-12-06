@@ -15,7 +15,7 @@ class Eat extends Component{
 	componentWillUnmount(){
 		console.log('e1')
 		store.dispatch({
-			type:'ShowMaizuoTabbar',
+			type:'ShowTabbar',
 			payload:true
 		})
 	}
@@ -23,7 +23,7 @@ class Eat extends Component{
 	componentDidMount(){
 		console.log('e2')
 		store.dispatch({
-			type:'HideMaizuoTabbar',
+			type:'HideTabbar',
 			payload:false
 		})
 	}
