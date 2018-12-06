@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Navlink} from 'react-router-dom';
 import css from './index.module.scss';
+import axios from 'axios';
 
 class Home extends Component{
 	render(){
@@ -13,13 +14,12 @@ class Home extends Component{
 //http://preh5homeapi.yiguo.com/api/Template/GetTemplate
 	componentDidMount(){
 		axios({
-			url:'/api/Template/GetTemplate'
-			method:'post'
-			headers:{
-
-			}
+			url:'/api/Template/GetTemplate',
+			method:'post',
+			'Content-Type':'application/json; charset=utf-8',
+			Area:{Default: 0, Version: "2.0", Id: "0718b3bf-b99b-4aa4-97bd-4a4da0b92464", Name: "珠海", Code: 512}
 		}).then(res=>{
-			console.log(res.data)
+			console.log(res.data);
 		})
 	}
 }
