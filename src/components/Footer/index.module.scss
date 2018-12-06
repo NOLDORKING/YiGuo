@@ -1,22 +1,28 @@
 footer{
-	position:fixed;
-	left:0px;
-	bottom:5px;
-	width:100%;
-	height:50px;
-	
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid #d5d5d5;
+    background: #fff;
 	background-color:white;
 	ul{
-		display:flex;
 		li{
-			flex:1;
-			text-align: center;
 			a{
-				color:black;
-				text-decoration: none;
-				display:block;
-				width:100%;
-				height:100%;
+				    position: relative;
+				    display: block;
+				    float: left;
+				    width: 20%;
+				    height: 50px;
+				    color: #FFF;
+				    font-size: 12px;
+				    color: #8d8a8a;
+				    text-align: center;
+				span{
+
+				}
 				i{
 					width:32px;
 					height:24px;
@@ -46,21 +52,24 @@ footer{
 			}
 
 			.iHome{
-					    color:red;
+					    color:#008842;
 				i{
 					background: url(../../asstes/img/nav_home_selected_active.png) center no-repeat;
 				    background-size: 100% 100%;
 				}
 			}
 			.iCart{
-					    color:red;
+					    color:#008842;
 				i{
 					background: url(../../asstes/img/nav_list_active.png) center no-repeat;
 				    background-size: 100% 100%;
 				}
 			}
+			.iEat{
+				color:#008842;
+				}
 			.iClassfi{
-					 color:red;
+					 color:#008842;
 
 				i{
 					background: url(http://img07.yiguoimg.com/e/web/170110/00583/164146/nav_classify_active.png) center no-repeat;
@@ -69,7 +78,7 @@ footer{
 				}
 			}
 			.iMy{
-					 color:red;
+					 color:#008842;
 
 				i{
 					background: url(http://img05.yiguoimg.com/e/web/170110/00583/164146/nav_user_active.png) center no-repeat;
