@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 import css from './index.module.scss';
 
 import axios from 'axios';
+
 class Classfi extends Component{
 	constructor(props) {
 	  super(props);
@@ -18,10 +19,12 @@ class Classfi extends Component{
 			<div className={css.main}>
 				<header>
 					<form>
-						<input placeholder="请输入商品名称" onFocus={this.getfocus.bind(this)}/>
+						<input placeholder="请输入商品名称" onFocus={this.getfocus.bind(this)} ref="searchText"/>
+
 						<i className={css.search_icon}></i>
 					</form>
-					<span>搜索</span>
+					<span onClick={this.serchClick.bind(this)}>搜索</span>
+
 				</header>
 				<div className={css.boxBg+" "+(this.state.boxIsShow?css.isShow:'')} onClick={this.boxBgClick.bind(this)}></div>
 				<section className={css.clear}>
@@ -74,7 +77,6 @@ class Classfi extends Component{
 	}
 	navlistClick(index){
 
-
 		var newnavlist = this.state.navlist;
 		newnavlist = newnavlist.map(item=>{
 			item.isActive = false;
@@ -91,8 +93,13 @@ class Classfi extends Component{
 
 	}
 
+	serchClick(){
+		console.log(this.refs.searchText.value)
+		console.log('lalal',this.props);
+		var text = this.refs.searchText.value ;
+		this.props.history.push(`/search/${text}`)
 
-
+	}
 	componentDidMount(){
 		axios({
 			url:'/CategoryOpt/GetCategory',

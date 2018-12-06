@@ -43,7 +43,10 @@ class Footer extends Component{
 			this.setState({
 				isShow:store.getState().tabbarReducer
 
+			},()=>{
+				console.log('foot',this.state.isShow)
 			})
+			
 		})
 	}
 }
