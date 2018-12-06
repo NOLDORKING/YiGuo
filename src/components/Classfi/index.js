@@ -6,31 +6,28 @@ import axios from 'axios';
 class Classfi extends Component{
 	render(){
 		return(
-			<div>
-				Classfi
+			<div className="main">
+				<header>
+					<input placeholder="请输入商品名称"/>
+					<i className="css.search_icon"></i>
+					<span>搜索</span>
+				</header>
+				<section>
+				</section>
 			</div>
 			)
 	}
-	// http://preh5homeapi.yiguo.com/api/Template/GetTemplate
+
 	componentDidMount(){
-		axios.post('/api/Template/GetTemplate').then(res=>{
-			console.log(res.data)
-		})
-
-		axios.post('/CategoryOpt/GetCategory').then((res)=>{
-			console.log(res.data)
-		})
-
 		axios({
-			url:"/gateway?cityId=440300&pageNum=1&pageSize=10&type=1&k=7387392",
-			method: 'get', 
-			headers:{
-				'X-Client-Info': '{"a":"3000","ch":"1002","v":"1.0.0","e":"1"}',
-				'X-Host': 'mall.film-ticket.film.list'
-			}
-		}).then(res=>{
-			console.log(res.data);
+			url:'/CategoryOpt/GetCategory',
+			method:'get',
+			
+		}).then((res)=>{
+			console.log(res.data)
 		})
+
+		
 	}
 }
 export default Classfi;
