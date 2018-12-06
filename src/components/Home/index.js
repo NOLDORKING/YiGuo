@@ -10,5 +10,17 @@ class Home extends Component{
 			</div>
 			)
 	}
+//http://preh5homeapi.yiguo.com/api/Template/GetTemplate
+	componentDidMount(){
+		axios({
+			url:'/api/Template/GetTemplate'
+			method:'post'
+			headers:{
+
+			}
+		}).then(res=>{
+			console.log(res.data)
+		})
+	}
 }
 export default Home;
