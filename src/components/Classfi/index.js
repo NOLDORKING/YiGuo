@@ -105,7 +105,7 @@ class Classfi extends Component{
 			 	item.isActive = false;
 			 	return item;
 			})
-			
+			list[0].isActive = true;
 			this.setState({
 				navlist:list,
 				listContent:res.data.RspData.data[0].Childs
