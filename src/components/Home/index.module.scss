@@ -1,0 +1,40 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.home{
+	width: 100%;
+	.home_top{
+		display: flex;
+		height: 1.24rem;
+		background: linear-gradient(to right, #36db84 , #0eb27b);
+		color: white;
+		font-size:14px;
+		a{
+			width: 2.2rem;
+			text-align: center;
+			line-height: 1.24rem;
+		}
+		.top_search{
+			flex:1;
+			height: .9rem;
+			background: rgba(255,255,255,.2);
+			margin: .17rem .32rem 0rem 0rem;
+			border-radius: 0.62rem;
+		}
+	}
+	.swiper_img{
+		img{
+			width: 100%;
+		}
+	}
+	.ws_img{
+		img{
+			width: 100%;
+		}
+	}
+	.first_menu{
+		width: 100%;
+		padding:.34rem .21rem .02rem .21rem;
+	}
+}
