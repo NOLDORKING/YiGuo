@@ -11,7 +11,8 @@ class Classfi extends Component{
 	  this.state = {
 	  	boxIsShow:true,
 	  	navlist:[],
-	  	listContent:[]
+	  	listContent:[],
+	  	loadIsShow:true
 	  };
 	}
 	render(){
@@ -47,7 +48,7 @@ class Classfi extends Component{
 							<div className={css.commodityBox}>
 								{
 									this.state.listContent.map((item,index)=>
-											<a href="javascript:;" key={item.CategoryId} className={css.commodityList}>
+											<a href="javascript:;" key={item.CategoryId} className={css.commodityList} onClick={this.proClick.bind(this,item.CategoryCode)}>
 												<img src={item.PictureUrl}/>
 												{item.CategoryName}
 											</a>
@@ -57,6 +58,9 @@ class Classfi extends Component{
 						</li>
 					</ul>
 				</section>
+				<div className={css.loading+' '+(this.state.loadIsShow?'':css.hide)}> 
+				     <div className={css.img}></div>
+			 	</div>
 			</div>
 			)
 	}
@@ -94,10 +98,13 @@ class Classfi extends Component{
 		console.log(this.refs.searchText.value)
 		console.log('lalal',this.props);
 		var text = this.refs.searchText.value ;
-		this.props.history.push(`/search/${text}`)
+		this.props.history.push(`/search/pro?keyWord=${text}`)
 
 	}
 
+	proClick(pro){
+		this.props.history.push(`/search/pro?catCode=${pro}`)
+	}
 	componentDidMount(){
 		axios({
 			url:'/CategoryOpt/GetCategory',
@@ -113,7 +120,8 @@ class Classfi extends Component{
 			list[0].isActive = true;
 			this.setState({
 				navlist:list,
-				listContent:res.data.RspData.data[0].Childs
+				listContent:res.data.RspData.data[0].Childs,
+				loadIsShow:false
 
 			})
 		})

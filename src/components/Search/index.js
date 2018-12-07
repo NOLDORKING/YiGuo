@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Navlink} from 'react-router-dom';
+// import {Navlink} from 'react-router-dom';
 import css from './index.module.scss';
 import store from '../../store';
 import axios from 'axios';
@@ -10,9 +10,16 @@ class Search extends Component{
 	
 	  this.state = {
 	  	prolist:[],
+	  	catCode:false,
+	  	keyWord:false,
+	  	catCodeValue:'',
+	  	keyWordValue:'',
+
 	  	xlActive:true,
 	  	xpActive:false,
-	  	jgActive:false
+	  	jgActive:false,
+
+	  	loadIsShow:true
 	  };
 	}
 	render(){
@@ -20,14 +27,14 @@ class Search extends Component{
 			<div>
 				<div className={css.navList}>
 
-				        <div className={css.list+' '+(this.state.xlActive?css.active:'')} onClick={this.xlClick.bind(this)} >销量</div>
-				        <div className={css.list+' '+(this.state.xpActive?css.active:'')} onClick={this.xpClick.bind(this)} >新品</div>
-				        <div className={css.list+' '+(this.state.jgActive?css.active:'')} onClick={this.jgClick.bind(this)} >价格<i className={css.priceIcon} ></i></div>
+				        <div className={css.list+' '+(this.state.xlActive?css.active:'')} onClick={this.Click.bind(this,'')} >销量</div>
+				        <div className={css.list+' '+(this.state.xpActive?css.active:'')} onClick={this.Click.bind(this,'NewCommodity')} >新品</div>
+				        <div className={css.list+' '+(this.state.jgActive?css.active:'')} onClick={this.Click.bind(this,'PriceAsc')} >价格<i className={css.priceIcon} ></i></div>
 				</div>
 				<div className={css.proBox}>
 					{
 						this.state.prolist.map((item,index)=>
-							<div className={css.productContent} key={item.CommodityId}>
+							<div className={css.productContent} key={item.CommodityId} onClick={this.proClick.bind(this,item.CommodityCode)}>
 							            <div className={css.img}>			                
 							                <img src={item.SmallPic}/>
 							            </div>
@@ -48,70 +55,111 @@ class Search extends Component{
 							)
 					}
 				</div>
+				<div className={css.loading+' '+(this.state.loadIsShow?'':css.hide)}> 
+				     <div className={css.img}></div>
+			 	</div>
+
+
 			</div>
 		)
 	}
 
-	xpClick(){
-		axios.post('/ProductOpt/GetProductLists',`KeyWord=${this.props.match.params.id}&CatCode=&PageIndex=1&PageSize=20&Sort=NewCommodity`
-			).then(res=>{
-				console.log(res.data)
-				this.setState({
-					prolist:res.data.RspData.data	
-				})
-				console.log('新品：',this.state.prolist);
-			})
-		this.setState({
-			xlActive:false,
-			xpActive:true,
-			jgActive:false
-		})
+	proClick(proCode){
+		console.log(this.props)
+		this.props.history.push(`/detail/${proCode}`)
+	
+
 	}
 
-	jgClick(){
-		axios.post('/ProductOpt/GetProductLists',`KeyWord=${this.props.match.params.id}&CatCode=&PageIndex=1&PageSize=20&Sort=PriceAsc`
-			).then(res=>{
-				console.log(res.data)
-				this.setState({
-					prolist:res.data.RspData.data	
-				})
-				console.log('价格：',this.state.prolist);
-			})
+	Click(searchText){
 		this.setState({
-			xlActive:false,
-			xpActive:false,
-			jgActive:true
-		})
+			loadIsShow:true
+		},)
+		if(this.state.keyWord){
+			axios.post('/ProductOpt/GetProductLists',`KeyWord=${this.state.keyWordValue}&CatCode=&PageIndex=1&PageSize=20&Sort=${searchText}`
+				).then(res=>{
+					console.log(res.data)
+					this.setState({
+						prolist:res.data.RspData.data,
+						loadIsShow:false
+					},)
+
+					console.log(`keyWord${searchText}：`,this.state.prolist);
+				})
+		}
+		if(this.state.catCode){
+			axios.post('/ProductOpt/GetProductLists',`KeyWord=&CatCode=${this.state.catCodeValue}&PageIndex=1&PageSize=20&Sort=${searchText}`
+				).then(res=>{
+					console.log(res.data)
+					this.setState({
+						prolist:res.data.RspData.data,
+						loadIsShow:false	
+					})
+					console.log(`catCode${searchText}：`,this.state.prolist);
+				})
+		}
+		switch(searchText){
+			case '':
+			this.setState({
+				xlActive:true,
+				xpActive:false,
+				jgActive:false
+			});
+			break;
+			case 'NewCommodity':
+			this.setState({
+				xlActive:false,
+				xpActive:true,
+				jgActive:false
+			});
+			break;
+			case 'PriceAsc':
+			this.setState({
+				xlActive:false,
+				xpActive:false,
+				jgActive:true
+			});
+			break;
+		}
+		
 	}
-	xlClick(){
-		axios.post('/ProductOpt/GetProductLists',`KeyWord=${this.props.match.params.id}&CatCode=&PageIndex=1&PageSize=20&Sort=`
-			).then(res=>{
-				console.log(res.data)
-				this.setState({
-					prolist:res.data.RspData.data	
-				})
-				console.log('销量：',this.state.prolist);
+
+	
+
+	searchUrl(){
+		console.log('this.props：',this.props);
+		var searchStr = this.props.location.search;
+		console.log(searchStr);
+		var strReg = /.(.*)=(.*)/;
+		strReg.test(searchStr);
+		console.log('RegExp.$1:',RegExp.$1)
+		console.log('RegExp.$2:',RegExp.$2)
+		if(RegExp.$1 ==='catCode'){
+			this.setState({
+				catCode:true,
+				catCodeValue:RegExp.$2
+			},()=>{
+				this.Click.call(this,'');
 			})
-		this.setState({
-			xlActive:true,
-			xpActive:false,
-			jgActive:false
-		})
+		}
+		if(RegExp.$1 === 'keyWord'){
+			console.log('====')
+			this.setState({
+				keyWord:true,
+				keyWordValue:RegExp.$2
+			},()=>{
+				console.log(this.state);
+				console.log('keyWord:',this.state.keyWord,',keyWordValue:',this.state.keyWordValue)
+				this.Click.call(this,'');
+			})
+		}
 	}
 	componentDidMount(){
 		store.dispatch({
 			type:'HideTabbar',
 			payload:false
-		})
-		console.log(this.props.match.params.id)
-		axios.post('/ProductOpt/GetProductLists',`KeyWord=${this.props.match.params.id}&CatCode=&PageIndex=1&PageSize=20&Sort=`
-			).then(res=>{
-				console.log(res.data)
-				this.setState({
-					prolist:res.data.RspData.data	
-				})
-				console.log(this.state.prolist);
-			})
+		})	
+		this.searchUrl.call(this);
 	}
 
 	

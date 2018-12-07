@@ -1,0 +1,152 @@
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.2);
+    text-align: center;
+    z-index: 1000;
+	.img {
+	    position: absolute;
+	    left: 50%;
+	    top: 50%;
+	    width: 2.52rem;
+	    height: 2.52rem;
+	    margin: -1.26rem 0 0 -1.26rem;
+	    border-radius: .3rem;
+	    background: #fff url(http://img07.yiguoimg.com/e/web/170113/01851/110053/1.gif) no-repeat center;
+	    background-size: 2.1rem;
+	 }
+
+}
+.hide{
+	display:none;
+}
+
+.productInfor {
+    padding: .45rem 0 0rem .32rem;
+    background: #fff;
+    margin-bottom: .3rem;
+    .title {
+        line-height: .8rem;
+        padding-right: .32rem;
+        font-size: .5rem;
+        color: #333;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .subhead {
+        padding-right: .32rem;
+        font-size: .38rem;
+        color: #808080;
+        padding-top: .25rem;
+        line-height: .8rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        height: 1.2rem;
+        .label {
+            padding: .12rem .25rem;
+            border: 1px solid #1fa44b;
+            border-radius: 20px;
+            color: #1fa44b;
+            margin-right: .25rem;
+            font-style: normal;
+        }
+    }
+    .price {
+        position: relative;
+        padding: .32rem 0 .5rem;
+        overflow: hidden;
+        .priceIn {
+            float: left;
+            .priceRed {
+                font-size: .66rem;
+                color: #ff6353;
+            }
+        }
+       	.area {
+            float: right;
+            font-size: .34rem;
+            color: #808080;
+            padding-right: .32rem;
+            .name {
+                color: #333;
+                line-height: .66rem;
+            }
+        }
+    }
+    .sevenDay {
+        line-height: 1.32rem;
+        color: #808080;
+        font-size: .34rem;
+      	.dian {
+            display: inline-block;
+            width: .12rem;
+            height: .12rem;
+            background: #11b57c;
+            border-radius: 50%;
+            margin-right: .2rem;
+        }
+    }
+}
+
+.clear:after{
+	display: block;
+	content:"";
+	clear:both;
+}
+
+.sale {
+    background: #fff;
+    margin-bottom: .3rem;
+   	h3 {
+        position: relative;
+        padding: .43rem .32rem;
+        box-sizing: border-box;
+        font-size: .42rem;
+        color: #808080;
+    }
+    .saleIn {
+        padding-left: .32rem;
+        .saleListTwo {
+            position: relative;
+            padding: .45rem .32rem .45rem 1.3rem;
+            .label {
+                position: absolute;
+                top: .45rem;
+                left: 0;
+                padding: .05rem .13rem;
+                background: #11b57c;
+                border-radius: 3px;
+                font-size: .34rem;
+                color: #fff;
+                font-style: normal;
+            }
+            .title {
+                font-size: .38rem;
+                color: #333;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                padding-bottom: .2rem;
+            }
+            .list {
+                padding: .1rem 0;
+                .txt {
+                    font-size: .34rem;
+                    color: #333;
+                }
+            }
+        }
+    }
+}
+
