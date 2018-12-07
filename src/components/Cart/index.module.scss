@@ -1,0 +1,408 @@
+.red {
+    color: #ff6353;
+}
+body {
+	background: #f4f4f4;
+    color: #000;
+}
+
+.line_all::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 200%;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+}
+
+.line_bottom:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+    transform: scaleY(0.5);
+    transform-origin: 0 0;
+}
+
+.line_top:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+    transform: scaleY(0.5);
+    transform-origin: 0 0;
+}
+
+.elli2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.clear:after {
+    content: '\20';
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.cart{
+//头
+	.cart_express{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 1.32rem;
+		padding: 0 0 0 .32rem;
+		box-sizing: border-box;
+		background: #fff9eb;
+		line-height: 1.32rem;
+		font-size: .38rem;
+		color: #333;
+		z-index: 100;
+	}
+	.cart_express::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: #ffd6a0;
+    transform: scaleY(0.5);
+    transform-origin: 0 0;
+	}
+//商品
+	.cart_wrap.pd {
+    padding-top: 1.62rem;
+	}
+	.cart_wrap{
+		padding: 2.94rem 0 80px;
+	    color: #333;
+	    .goods{
+	    	.group{
+	    		position: relative;
+	    		margin: 0 0 .3rem;
+	    		background: #fff;
+	    		.one{
+	    			position: relative;
+	    			padding: .32rem 0 .32rem 1.22rem;
+	    			.check{
+	    				position: absolute;
+	    				top: .32rem;
+	    				left: 0;
+	    				width: 1.22rem;
+	    				height: .54rem;
+	    				padding: 1.08rem 0;
+	    				text-align: center;
+	    				i{
+	    					display: inline-block;
+	    					width: .54rem;
+	    					height: .54rem;
+	    					background: url(../../asstes/img/check1.png) no-repeat;
+	    					background-size: 100%;
+	    				}
+	    			}
+	    			.img{
+	    				position: absolute;
+	    				left: 1.22rem;
+	    				top: .32rem;
+	    				width: 2.7rem;
+	    				height: 2.7rem;
+	    				img{
+	    					display: block;
+	    					width: 2.7rem;
+	    					height: 2.7rem;
+	    				}
+	    			}
+	    			.text{
+	    				padding: 0 1.9rem 0 3rem;
+	    				h2{
+	    					height: 1.12rem;
+	    					line-height: .56rem;
+	    					font-size: .42rem;
+	    					font-weight: normal;
+	    				}
+	    				.elili2{
+	    					overflow: hidden;
+    					    text-overflow: ellipsis;
+    					    display: -webkit-box;
+    					    -webkit-box-orient: vertical;
+    					    -webkit-line-clamp: 2;
+	    				}
+	    				.tag{
+	    					height: .56rem;
+	    					padding: .2rem 0 .1rem;
+	    				}
+	    				p{
+	    					height: .72rem;
+	    					line-height: .72rem;
+	    					font-size: 11px;
+	    					color: #ccc;
+	    					b{
+	    						font-size: .42rem;
+	    					}
+	    				}
+	    			}
+	    			.del{
+	    				position: absolute;
+	    				right: .5rem;
+	    				top: .42rem;
+	    				width: .48rem;
+	    				height: .5rem;
+	    				i{
+	    					display: block;
+	    					width: .48rem;
+	    					height: .5rem;
+	    					background: url(../../asstes/img/del.png) no-repeat;
+	    					background-size: 100%;
+	    				}
+	    			}
+	    			.limit{
+	    				position: absolute;
+	    				right: .5rem;
+	    				top: 1.8rem;
+	    				line-height: .4rem;
+	    				font-size: 11px;
+	    			}
+	    			.num{
+	    				position: absolute;
+    				    right: .5rem;
+    				    top: 2.3rem;
+    				    width: 2.6rem;
+    				    height: .72rem;
+    				    .cut{
+    				    	float: left;
+    				    	position: relative;
+    				    	width: .72rem;
+    				    	height: .72rem;
+    				    	i{
+    				    		position: absolute;
+    				    		left: .21rem;
+    				    		top: .36rem;
+    				    		width: .33rem;
+    				    		height: .03rem;
+    				    		background: url(../../asstes/img/cut1.png) no-repeat;
+    				    		background-size: 100%;
+    				    	}
+    				    }
+    				    .cut::after{
+    				    	border-radius: 8px 0 0 8px;
+    				    }
+    				    
+    				    .input{
+    				    	float: left;
+    				    	position: relative;
+    				    	width: 1.16rem;
+    				    	height: .72rem;
+    				    	line-height: .72rem;
+    				    	color: #333;
+    				    	text-align: center;
+    				    }
+    				    .input::before {
+    				        content: '';
+    				        position: absolute;
+    				        left: 0;
+    				        top: 0;
+    				        width: 100%;
+    				        height: 1px;
+    				        background: #ddd;
+    				        transform: scaleY(0.5);
+    				        transform-origin: 0 0;
+    				    }
+    				   
+    				    .add{
+    				    	float: left;
+    				    	position: relative;
+    				    	width: .72rem;
+    				    	height: .72rem;
+    				    	i{    
+    				    		position: absolute;
+							    left: .21rem;
+							    top: .21rem;
+							    width: .33rem;
+							    height: .33rem;
+							    background: url(../../asstes/img/add2.png) no-repeat;
+							    background-size: 100%;
+							}
+    				    }
+	    			}
+	    		}
+	    	}
+	    }
+
+//猜你喜欢
+		.guess{
+			position: relative;
+			margin: 0 0 .3rem;
+			background: #fff;
+			.title{
+				position: relative;
+			    height: 1.65rem;
+			    line-height: 1.65rem;
+			    font-size: .48rem;
+			    color: #000;
+			    text-align: center;
+			    h2{
+			    	position: relative;
+		    	    display: inline-block;
+		    	    padding: 0 .18rem;
+		    	    font-size: .48rem;
+		    	    font-weight: normal;
+			    }
+			    h2::before{
+			    	left: -.7rem;
+			    	content: "";
+			    	display: block;
+			    	width: .7rem;
+			    	height: .09rem;
+			    	position: absolute;
+			    	top: 50%;
+			    	margin-top: -.04rem;
+			    	background: url(../../asstes/img/line.png) top left no-repeat;
+			    	background-size: auto 100%;
+			    }
+			    h2::after{
+			    	right: -.7rem;
+			    	transform: rotate(180deg);
+			    	content: "";
+			    	display: block;
+			    	width: .7rem;
+			    	height: .09rem;
+			    	position: absolute;
+			    	top: 50%;
+			    	margin-top: -.04rem;
+			    	background: url(../../asstes/img/line.png) top left no-repeat;
+			    	background-size: auto 100%;
+			    }
+			}
+			.list{
+				position: relative;
+				padding: .1rem .19rem .74rem;
+				.one{
+					float: left;
+					position: relative;
+					width: 50%;
+					padding: .16rem .53rem;
+					box-sizing: border-box;
+					.img{
+						width: 4.96rem;
+						height: 4.96rem;
+						img{
+							display: block;
+						    width: 4.96rem;
+						    height: 4.96rem;
+						}
+					}
+					.text{
+						h2{
+							height: 1.12rem;
+							line-height: .56rem;
+							font-size: .42rem;
+							font-weight: normal;
+						}
+						p{
+							height: .8rem;
+							line-height: .8rem;
+							font-size: 11px;
+							color: #808080;
+							b{
+								font-size: .42rem;
+							}
+						}
+					}
+					.btn{
+						position: absolute;
+						right: .53rem;
+						bottom: .16rem;
+						a{
+							display: block;
+							width: .8rem;
+							height: .8rem;
+							background: url(../../asstes/img/add.png) no-repeat;
+							background-size: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+//合计
+	.cart_total {
+	    position: fixed;
+	    left: 0;
+	    bottom: 50px;
+	    width: 100%;
+	    height: 1.6rem;
+	    padding: 0 3.9rem 0 0;
+	    box-sizing: border-box;
+	    background: #fff;
+	    .check{
+	    	    position: absolute;
+	    	    top: 0;
+	    	    left: 0;
+	    	    width: 2.1rem;
+	    	    height: .54rem;
+	    	    padding: .53rem 0 .53rem .36rem;
+	    	    font-size: .38rem;
+	    	    i{    
+	    	    	display: inline-block;
+				    width: .54rem;
+				    height: .54rem;
+				    margin: 0 .18rem 0 0;
+				    background: url(../../asstes/img/check1.png) no-repeat;
+				    background-size: 100%;
+				    vertical-align: -4px;
+				}
+	    	}
+	    	.text{    
+	    		padding: .2rem 0;
+			    line-height: .6rem;
+			    font-size: 11px;
+			    text-align: right;
+			    p{
+			    	display: block;
+			    	margin-block-start: 1em;
+			    	margin-block-end: 1em;
+			    	margin-inline-start: 0px;
+			    	margin-inline-end: 0px;
+			    	b{
+			    		font-size: .46rem;
+			    	}
+			    }
+			    span{
+			    	color: #999;
+			    }
+			}
+			.btn{
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 3.6rem;
+				height: 1.6rem;
+				a{
+					display: block;
+					width: 3.6rem;
+					height: 1.6rem;
+					background: #ff6353;
+					line-height: 1.6rem;
+					font-size: .5rem;
+					color: #fff;
+					text-align: center;
+			}
+	    }
+	}
+}

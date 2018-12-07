@@ -11,6 +11,7 @@ class Classfi extends Component{
 	  this.state = {
 	  	boxIsShow:true,
 	  	navlist:[],
+
 	  	listContent:[],
 	  	loadIsShow:true
 	  };
@@ -21,9 +22,11 @@ class Classfi extends Component{
 				<header>
 					<form>
 						<input placeholder="请输入商品名称" onFocus={this.getfocus.bind(this)} ref="searchText"/>
+
 						<i className={css.search_icon}></i>
 					</form>
 					<span onClick={this.serchClick.bind(this)}>搜索</span>
+
 				</header>
 				<div className={css.boxBg+" "+(this.state.boxIsShow?css.isShow:'')} onClick={this.boxBgClick.bind(this)}></div>
 				<section className={css.clear}>
@@ -78,6 +81,7 @@ class Classfi extends Component{
 		})
 	}
 	navlistClick(index){
+
 		var newnavlist = this.state.navlist;
 		newnavlist = newnavlist.map(item=>{
 			item.isActive = false;
@@ -98,10 +102,10 @@ class Classfi extends Component{
 		console.log(this.refs.searchText.value)
 		console.log('lalal',this.props);
 		var text = this.refs.searchText.value ;
+
 		this.props.history.push(`/search/pro?keyWord=${text}`)
 
 	}
-
 	proClick(pro){
 		this.props.history.push(`/search/pro?catCode=${pro}`)
 	}
@@ -120,6 +124,7 @@ class Classfi extends Component{
 			list[0].isActive = true;
 			this.setState({
 				navlist:list,
+
 				listContent:res.data.RspData.data[0].Childs,
 				loadIsShow:false
 
