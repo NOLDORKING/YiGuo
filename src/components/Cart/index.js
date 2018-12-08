@@ -65,7 +65,7 @@ class Cart extends Component{
 								</p>
 							</div>
 							<div className={css.del}>
-								<i></i>
+								<i onClick={this.delClick.bind(this,index)}></i>
 							</div>
 							<div className={css.limit+' '+css.red}>
 							</div>
@@ -129,7 +129,13 @@ class Cart extends Component{
 		</div>
 			)
 	}
-
+	delClick(index){
+		var newShoplist = this.state.shoplist;
+		newShoplist.splice(index,1)
+		this.setState({
+			shoplist:newShoplist,
+		})
+	}
 	handleCutClick(inputTxt,index){
 		var num = parseInt(this.refs[inputTxt].innerHTML);
 		this.refs[inputTxt].innerHTML=(num<2?1:--num);
