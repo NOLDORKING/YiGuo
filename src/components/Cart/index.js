@@ -19,7 +19,7 @@ class Cart extends Component{
 		Selected:false
 		},
 		{
-		CommodityAmount:3,
+		CommodityAmount:1,
 		CommodityCode: "1533980",
 		CommodityId: "94d22770-0146-4875-b845-1a0467a52e08",
 		CommodityName: "四川爱媛蜜柑1kg约100g/个",
@@ -28,7 +28,8 @@ class Cart extends Component{
 		Selected:false
 		},
 		],
-		allnum:0
+		allnum:0,
+		Selected2:false
 	  };
 
 	}
@@ -113,7 +114,8 @@ class Cart extends Component{
 {/*---------------------合计-----------------------*/}
 			<div className={css.cart_total+' '+css.line_top}>
 		        <div className={css.check}>
-			        <i></i>
+
+			        <i className={this.state.Selected2?css.active:''} onClick={this.handleAllCheckClick.bind(this)}></i>
 			        全选
 		        </div>
 		        <div className={css.text}>
@@ -149,6 +151,7 @@ class Cart extends Component{
 		})
 		this.allNum.call(this);
 	}
+
 	handleCheckClick(index){
 		var newShoplist = this.state.shoplist;
 		newShoplist[index].Selected=!newShoplist[index].Selected;
@@ -157,6 +160,20 @@ class Cart extends Component{
 		})
 		this.allNum.call(this);
 	}
+
+	handleAllCheckClick(){
+		var newShoplist = this.state.shoplist;
+		newShoplist.forEach((item) => {
+		 item.Selected = !this.state.Selected2
+		})
+		// newShoplist[].Selected=!newShoplist[].Selected;
+		this.setState({
+			Selected2:!this.state.Selected2,
+			shoplist:newShoplist,
+		})
+		this.allNum.call(this);
+	}
+
 	allNum(){
 		var allnum = 0;
 
