@@ -8,6 +8,9 @@ import { Carousel, WingBlank } from 'antd-mobile';
 import DatePicker from 'antd-mobile/lib/date-picker';  // 加载 JS
 import 'antd-mobile/lib/date-picker/style/css';   // 加载 css
 
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.css';
+
 class Detail extends Component{
 	constructor(props) {
 	  super(props);
@@ -17,7 +20,10 @@ class Detail extends Component{
 	  	proData:{},
 	  	cuxiaoData:[],
 	  	data: ['1', '2', '3'],
+	  	swiperData:[],
+	  	proCode:'',
    		imgHeight: 176,
+   		likeId:''
 	  };
 	}
 	render(){
@@ -110,19 +116,30 @@ class Detail extends Component{
 			        </div>
 			</div>
 
-
 			<div className={css.recommend}>
-			        <h3>大家都在买</h3>
-			        <div className={css.listAll}>
-			            <ul className={css.allIn}>
-			                <li className={css.list}>
-			                    <img src="http://img11.yiguoimg.com/d/items/2018/180817/9288729490531601_300.jpg" />
-			                    <p className={css.title}>福建琯溪白心蜜柚2个约1kg/个</p>
-			                    <p className={css.price}>¥11.00<i className={css.addCart}></i></p>
-			                </li>
-			            </ul>
-			        </div>
-			    </div>
+			    <h3>大家都在买</h3>
+				<div className={css.listAll}>
+				<div className={css.allIn}>
+				<div className="swiper-container">
+				    <div className="swiper-wrapper">
+				    {
+
+				    this.state.swiperData.map(item=>
+				      <div className="swiper-slide" key={item.CommodityId} onClick = {this.recommendClick.bind(this,item.CommodityCode)} >
+				      	
+				      	<div className={css.list}>
+				      	    <img src={item.SmallPic} />
+				      	    <p className={css.title}>{item.CommodityName}</p>
+				      	    <p className={css.price}>¥{item.CommodityPrice}<i className={css.addCart}></i></p>
+				      	</div>
+				      	</div> 
+				     )
+				   }
+				    </div>	   
+				 </div>
+				 </div>
+				 </div>
+				</div>
 	{/*------------------------------加载框--------------------------------------*/}
 			<div>
 				<div className={css.loading+' '+(this.state.loadIsShow?'':css.hide)}> 
@@ -134,13 +151,49 @@ class Detail extends Component{
 			</div>)
 	}
 
+	
+		
+	recommendClick(proCode){
+		console.log('this.props',this.props)
+		store.dispatch({
+			type:'detailCode',
+			payload:proCode
+		})
+		// this.setState({
+		// 	proCode:proCode
+		// },()=>{
+		// 
+		// })
+		this.props.history.push(`/detail/${this.state.proCode}`)
+	}	
+	
+	componentWillMount(){
+		this.setState({
+			proCode:this.props.match.params.id
+		})
+
+		store.subscribe(()=>{
+			this.setState({
+				proCode:store.getState().detailCodeReducer
+
+			},()=>{
+
+				console.log('detai store,detailCodeReducer',this.state.proCode)
+				
+
+			})
+			
+		})
+	}
 	componentWillUnmount(){
 		console.log('e1')
 		store.dispatch({
 			type:'ShowTabbar',
 			payload:true
 		})
+		
 	}
+
 
 	componentDidMount(){
 		console.log('e2')
@@ -149,19 +202,43 @@ class Detail extends Component{
 			payload:false
 		})
 		console.log('detail.props:',this.props)
+
 		// http://weixin.m.yiguo.com/ProductOpt/GetProductInfo
-		axios.post('/ProductOpt/GetProductInfo',`commodityCode=${this.props.match.params.id}`).then(res=>{
-			console.log(res.data.RspData.data)
+		axios.post('/ProductOpt/GetProductInfo',`commodityCode=${this.state.proCode}`).then(res=>{
+			console.log('detail数据：',res.data.RspData.data)
 			console.log(res.data.RspData.data.CommodityPromotions);
 			this.setState({
 				loadIsShow:false,
 				proData:res.data.RspData.data,
 				data:res.data.RspData.data.Pictures,
-				cuxiaoData:res.data.RspData.data.CommodityPromotions
+				cuxiaoData:res.data.RspData.data.CommodityPromotions,
+				likeId:res.data.RspData.data.CommodityId
+			},()=>{
+				axios.post('/ProductOpt/GetRecommendlist',`CommodityId=${this.state.likeId}`).then(res=>{
+					console.log('轮播数据：',res.data)
+					this.setState({
+						swiperData:res.data.RspData.data
+					},()=>{
+						var swiper = new Swiper('.swiper-container', {
+						     slidesPerView: 3,
+						     spaceBetween: 30,
+						     freeMode: true,
+						     pagination: {
+						       el: '.swiper-pagination',
+						       clickable: true,
+						     },
+						   });
+					})
+					
+				})
 			})
 		})
+		// http://weixin.m.yiguo.com/ProductOpt/GetRecommendlist
+		
 
 		
 	}
+
+
 }
 export default Detail;

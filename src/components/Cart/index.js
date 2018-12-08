@@ -179,11 +179,11 @@ class Cart extends Component{
 
 		this.state.shoplist.forEach((item) => {
 		  if(item.Selected){
-		  	allnum=allnum+item.CommodityPrice*item.CommodityAmount;
+		  	allnum= allnum+ item.CommodityPrice*item.CommodityAmount;
 		  }
 		})
 		this.setState({
-			allnum:allnum,
+			allnum:allnum.toFixed(2),
 		})
 	}
 	componentDidMount(){
