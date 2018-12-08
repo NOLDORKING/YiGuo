@@ -84,6 +84,7 @@ class Detail extends Component{
 			   		
 			   		 )}
 			</div>
+
 			<div className={css.norms}>
 				<div className={css.title}>
 				            规格
@@ -93,13 +94,35 @@ class Detail extends Component{
 				<div className={css.title}>
 		            数量
 		            <div className={css.num}>
-		                <span className ={css.cut+' '+css.line_all+" "+css.active}><i></i></span>
-		                <span className ={css.input+' '+css.line_bottom}>1</span>
+		                <span className ={css.cut+' '+css.line_all}><i></i></span>
+		                <span className ={css.input+' '+css.line_all}>1</span>
 		                <span className ={css.add+' '+css.line_all}><i></i></span>
 		            </div>
 		            <span className={css.hint}>限购20件</span>
 				</div>
 			</div>
+
+			<div className={css.address+' '+css.clear}>
+			        <p className={css.title}>送至</p>
+			        <div className={css.addressDetail}>
+			            <p className={css.add}><span></span>{this.state.proData.ShippingAddress}</p>
+			            <p className={css.infor}><span>有货</span>{this.state.proData.DeliveryTips}</p>
+			        </div>
+			</div>
+
+
+			<div className={css.recommend}>
+			        <h3>大家都在买</h3>
+			        <div className={css.listAll}>
+			            <ul className={css.allIn}>
+			                <li className={css.list}>
+			                    <img src="http://img11.yiguoimg.com/d/items/2018/180817/9288729490531601_300.jpg" />
+			                    <p className={css.title}>福建琯溪白心蜜柚2个约1kg/个</p>
+			                    <p className={css.price}>¥11.00<i className={css.addCart}></i></p>
+			                </li>
+			            </ul>
+			        </div>
+			    </div>
 	{/*------------------------------加载框--------------------------------------*/}
 			<div>
 				<div className={css.loading+' '+(this.state.loadIsShow?'':css.hide)}> 
