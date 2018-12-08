@@ -31,13 +31,13 @@ class Home extends Component{
 					<a>珠海</a> <div className={css.top_search}></div>
 				</div>
 		{/*上边轮播*/}
-		{
+			{
 			this.state.swiper_list?
 			<div className="swiper-container ws_a">
 			    <div className="swiper-wrapper">
 				      {
-				      	this.state.swiper_list.map(item=>
-							<div className="swiper-slide">
+				      	this.state.swiper_list.map((item,index)=>
+							<div className="swiper-slide"  key={index}>
 								<div className={css.swiper_img}>
 			      					<img src={item.pictureUrl} key={item.pictureUrl} alt=""/>
 			      				</div>
@@ -81,8 +81,8 @@ class Home extends Component{
 					this.state.screen_list?
 					<div className="swiper-container ws_b">
 					    <div className="swiper-wrapper">{
-					    	this.state.screen_list.map(item=>
-								<div className="swiper-slide">
+					    	this.state.screen_list.map((item,index)=>
+								<div className="swiper-slide" key={index}>
 									<div className={css.screen_word}>
 										{item.fastReportTitle}
 									</div>
@@ -106,8 +106,8 @@ class Home extends Component{
 				<div className="swiper-container ws_pro_1">
 				    <div className="swiper-wrapper">
 				     {
-				      	this.state.pro_list_1.map(item=>
- 							<div className="swiper-slide">
+				      	this.state.pro_list_1.map((item,index)=>
+ 							<div className="swiper-slide"  key={index}>
  								<img src={item.pictureUrl} key={item.pictureUrl} alt=""/>
  								<div className={css.pro1_info}>
  									<div>
@@ -140,8 +140,8 @@ class Home extends Component{
 				<div className="swiper-container ws_pro_1">
 				    <div className="swiper-wrapper">
 				     {
-				      	this.state.pro_list_2.map(item=>
- 							<div className="swiper-slide">
+				      	this.state.pro_list_2.map((item,index)=>
+ 							<div className="swiper-slide"  key={index}>
  								<img src={item.pictureUrl} key={item.pictureUrl} alt=""/>
  								<div className={css.pro1_info}>
  									<div>
@@ -174,8 +174,8 @@ class Home extends Component{
 				<div className="swiper-container ws_pro_1">
 				    <div className="swiper-wrapper">
 				     {
-				      	this.state.pro_list_3.map(item=>
- 							<div className="swiper-slide">
+				      	this.state.pro_list_3.map((item,index)=>
+ 							<div className="swiper-slide"  key={index}>
  								<img src={item.pictureUrl} key={item.pictureUrl} alt=""/>
  								<div className={css.pro1_info}>
  									<div>
@@ -208,8 +208,8 @@ class Home extends Component{
 				<div className="swiper-container ws_pro_1">
 				    <div className="swiper-wrapper">
 				     {
-				      	this.state.pro_list_4.map(item=>
- 							<div className="swiper-slide">
+				      	this.state.pro_list_4.map((item,index)=>
+ 							<div className="swiper-slide"  key={index}>
  								<img src={item.pictureUrl} key={item.pictureUrl} alt=""/>
  								<div className={css.pro1_info}>
  									<div>
@@ -242,8 +242,8 @@ class Home extends Component{
 				<div className="swiper-container ws_pro_1">
 				    <div className="swiper-wrapper">
 				     {
-				      	this.state.pro_list_5.map(item=>
- 							<div className="swiper-slide">
+				      	this.state.pro_list_5.map((item,index)=>
+ 							<div className="swiper-slide"  key={index}>
  								<img src={item.pictureUrl} key={item.pictureUrl} alt=""/>
  								<div className={css.pro1_info}>
  									<div>
@@ -276,8 +276,8 @@ class Home extends Component{
 				<div className="swiper-container ws_pro_1">
 				    <div className="swiper-wrapper">
 				     {
-				      	this.state.pro_list_6.map(item=>
- 							<div className="swiper-slide">
+				      	this.state.pro_list_6.map((item,index)=>
+ 							<div className="swiper-slide"  key={index}>
  								<img src={item.pictureUrl} key={item.pictureUrl} alt=""/>
  								<div className={css.pro1_info}>
  									<div>
@@ -310,8 +310,8 @@ class Home extends Component{
 				<div className="swiper-container ws_pro_1">
 				    <div className="swiper-wrapper">
 				     {
-				      	this.state.pro_list_7.map(item=>
- 							<div className="swiper-slide">
+				      	this.state.pro_list_7.map((item,index)=>
+ 							<div className="swiper-slide"  key={index}>
  								<img src={item.pictureUrl} key={item.pictureUrl} alt=""/>
  								<div className={css.pro1_info}>
  									<div>
