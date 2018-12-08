@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 import css from './index.module.scss';
 
 import axios from 'axios';
+
 class Classfi extends Component{
 	constructor(props) {
 	  super(props);
@@ -10,7 +11,9 @@ class Classfi extends Component{
 	  this.state = {
 	  	boxIsShow:true,
 	  	navlist:[],
-	  	listContent:[]
+
+	  	listContent:[],
+	  	loadIsShow:true
 	  };
 	}
 	render(){
@@ -18,10 +21,12 @@ class Classfi extends Component{
 			<div className={css.main}>
 				<header>
 					<form>
-						<input placeholder="请输入商品名称" onFocus={this.getfocus.bind(this)}/>
+						<input placeholder="请输入商品名称" onFocus={this.getfocus.bind(this)} ref="searchText"/>
+
 						<i className={css.search_icon}></i>
 					</form>
-					<span>搜索</span>
+					<span onClick={this.serchClick.bind(this)}>搜索</span>
+
 				</header>
 				<div className={css.boxBg+" "+(this.state.boxIsShow?css.isShow:'')} onClick={this.boxBgClick.bind(this)}></div>
 				<section className={css.clear}>
@@ -46,7 +51,7 @@ class Classfi extends Component{
 							<div className={css.commodityBox}>
 								{
 									this.state.listContent.map((item,index)=>
-											<a href="javascript:;" key={item.CategoryId} className={css.commodityList}>
+											<a href="javascript:;" key={item.CategoryId} className={css.commodityList} onClick={this.proClick.bind(this,item.CategoryCode)}>
 												<img src={item.PictureUrl}/>
 												{item.CategoryName}
 											</a>
@@ -56,6 +61,9 @@ class Classfi extends Component{
 						</li>
 					</ul>
 				</section>
+				<div className={css.loading+' '+(this.state.loadIsShow?'':css.hide)}> 
+				     <div className={css.img}></div>
+			 	</div>
 			</div>
 			)
 	}
@@ -74,7 +82,6 @@ class Classfi extends Component{
 	}
 	navlistClick(index){
 
-
 		var newnavlist = this.state.navlist;
 		newnavlist = newnavlist.map(item=>{
 			item.isActive = false;
@@ -91,8 +98,17 @@ class Classfi extends Component{
 
 	}
 
+	serchClick(){
+		console.log(this.refs.searchText.value)
+		console.log('lalal',this.props);
+		var text = this.refs.searchText.value ;
 
+		this.props.history.push(`/search/pro?keyWord=${text}`)
 
+	}
+	proClick(pro){
+		this.props.history.push(`/search/pro?catCode=${pro}`)
+	}
 	componentDidMount(){
 		axios({
 			url:'/CategoryOpt/GetCategory',
@@ -108,7 +124,9 @@ class Classfi extends Component{
 			list[0].isActive = true;
 			this.setState({
 				navlist:list,
-				listContent:res.data.RspData.data[0].Childs
+
+				listContent:res.data.RspData.data[0].Childs,
+				loadIsShow:false
 
 			})
 		})

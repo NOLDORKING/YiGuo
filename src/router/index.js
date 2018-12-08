@@ -6,6 +6,9 @@ import Classfi from '../components/Classfi';
 import Eat from '../components/Eat';
 import Cart from '../components/Cart';
 import My from '../components/My';
+import Search from '../components/Search';
+import Detail from '../components/Detail';
+
 const router = (
 	<Router>
 		<App>
@@ -16,12 +19,9 @@ const router = (
 						</Switch>
 					</Home>
 				}/>
-				<Route path='/classfi/' render={()=>
-					<Classfi>
-						<Switch>
-						</Switch>
-					</Classfi>
-				}/>
+				<Route path='/classfi/' component={Classfi}/>
+				<Route path='/search/:id' component={Search}/>
+				<Route path='/detail/:id' component={Detail}/>
 				<Route path='/eat/' render={()=>
 					<Eat>
 						<Switch>
