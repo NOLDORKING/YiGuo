@@ -150,3 +150,188 @@
     }
 }
 
+.norms {
+    background: #fff;
+    margin-bottom: .3rem;
+    .title {
+        position: relative;
+        color: #808080;
+        font-size: .42rem;
+        line-height: 1.2rem;
+        padding: .35rem .32rem;
+       .choose {
+            color: #808080;
+            font-size: .42rem;
+            padding: .2rem .2rem;
+            box-sizing: border-box;
+            border: 1px solid #808080;
+            border-radius: 3px;
+            margin: 0 .05rem;
+        }
+        .active {
+            color: #11b57c;
+            font-size: .42rem;
+            padding: .2rem .33rem;
+            box-sizing: border-box;
+            border: 1px solid #11b57c;
+        }
+        .num {
+            position: absolute;
+            left: 1.5rem;
+            top: .5rem;
+            width: 3.6rem;
+            height: .92rem;
+            .line_all{
+                border:1px solid #bdb9b9;
+            }
+            .cut,.add {
+                float: left;
+                position: relative;
+                width: .75rem;
+                height: .92rem;
+                i {
+                    position: absolute;
+                    left: .21rem;
+                    top: .28rem;
+                    width: .33rem;
+                    height: .33rem;
+                }
+            }
+            .cut{
+                i{
+                    background: url(../../asstes/img/cut2det.png) no-repeat;
+                    background-size: 100%;   
+                }
+            }
+            .add{
+                i{
+                    background: url(../../asstes/img/add2det.png) no-repeat;
+                    background-size: 100%;
+
+                }
+            }
+            .input {
+                float: left;
+                position: relative;
+                width: 1.04rem;
+                height: .93rem;
+                line-height: .93rem;
+                color: #333;
+                text-align: center;
+            }
+        }
+
+        .hint {
+            padding-left: 3.5rem;
+            color: #ff6353;
+        }
+
+    }
+}
+
+.address {
+    background: #fff;
+    padding: .45rem .32rem;
+    margin-bottom: .3rem;
+    .title {
+        float: left;
+        color: #808080;
+        font-size: .42rem;
+        padding-right: .3rem;
+    }
+    .addressDetail {
+        float: left;
+        .add {
+            position: relative;
+            padding-left: .4rem;
+            font-size: .42rem;
+            color: #333;
+            line-height: .5rem;
+            width: 9.5rem;
+            span {
+                position: absolute;
+                top: .03rem;
+                left: 0;
+                display: inline-block;
+                width: .32rem;
+                height: .36rem;
+                background: url(http://img05.yiguoimg.com/d/web/170830/00916/154520/dw.png) no-repeat;
+                background-size: 100% 100%;
+            }
+        }
+        .infor {
+            line-height: .7rem;
+            color: #808080;
+            font-size: .34rem;
+            span {
+                color: #11b57c;
+                padding-right: .2rem;
+            }
+        }
+
+    }
+}
+
+.recommend {
+    background: #fff;
+    margin-bottom: .3rem;
+    h3 {
+        font-size: .42rem;
+        font-weight: normal;
+        color: #808080;
+        padding: .32rem .32rem;
+    }
+   .listAll {
+        padding: 0 .32rem;
+        width: 100%;
+        height: 5.5rem;
+        box-sizing: border-box;
+        .allIn {
+            width: 100%;
+            height: 5.5rem;
+            width: 100%;
+            white-space: nowrap;
+            overflow-x: scroll;
+            overflow-y: hidden;
+           .list {
+                display: inline-block;
+                width: 3.5rem;
+                padding: 0 0rem .5rem;
+                margin: 0 .25rem;
+                box-sizing: border-box;
+                img {
+                    width: 2.58rem;
+                    height: 2.58rem;
+                    padding: 0 .23rem .75rem;
+                    box-sizing: content-box;
+                }
+                .title {
+                    width: 3.5rem;
+                    color: #808080;
+                    font-size: .36rem;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    margin-bottom: .1rem;
+                    line-height: .5rem;
+                }
+                .price {
+                    position: relative;
+                    font-size: .42rem;
+                    color: #ff6353;
+                    line-height: 1rem;
+                    .addCart {
+                        position: absolute;
+                        right: 0;
+                        top: 0rem;
+                        display: inline-block;
+                        width: .8rem;
+                        height: .8rem;
+                        background: url(http://img05.yiguoimg.com/d/web/170830/00911/152542/add.png) no-repeat;
+                        background-size: 100% 100%;
+                    }
+                }
+            }
+        }
+    }
+}
