@@ -3,6 +3,7 @@
 	margin: 0;
 }
 .home{
+	background: white;
 	width: 100%;
 	.home_top{
 		display: flex;
@@ -83,12 +84,12 @@
 		border-bottom: 1px solid #f4f4f4;
 		border-top: 1px solid #f4f4f4;
 	}
-	.ws_img_7{
+	.ws_img_8{
+		background: #f4f4f4;
 		img{
 			width: 100%;
 		}
-		background: #f4f4f4;
-		border-bottom: 1px solid #f4f4f4;
+		height: 5rem;
 		border-top: 1px solid #f4f4f4;
 	}
 	.help{
@@ -132,6 +133,65 @@
 		}
 
 		}
-		 
+		
+		}
+		.li_list{
+			li{
+			    height: 4.46rem;
+			    padding: .32rem;
+			    border-bottom: 2px solid #f4f4f4;
+			    .li_left{
+				float: left;
+				height: 4.5rem;
+				width:4.5rem;
+				img{
+					width:4.5rem;
+					height: 4.5rem;
+				}
+				}
+				.li_right{
+					padding-left: 20px;
+					.p1{
+						font-size: 18px;
+						padding-top: 10px;
+					}
+					.p2{
+						font-size: 12px;
+						padding-top: 10px;
+					}
+					.p3{
+						padding-top: 10px;
+					}
+					.p4{
+						padding-top: 20px;
+						.price_word{
+							color: red;
+							font-size: 18px;
+							font-weight: bold;
+						}
+						.price_kg{
+							padding-left: 2px;
+						}
+					}
+
+					p{
+						width: 180px;
+						overflow:hidden; 
+						text-overflow:ellipsis; 
+						white-space:nowrap;
+					}
+					height: 4.5rem;
+					float: left;
+				}
+				}	 
+	}
+	.fruit{
+		.fruit_title{
+			height: 1.7rem;
+			line-height: 1.7rem;
+			text-align: center;
+			font-size: 14px;
+			font-weight: bold;
+		}
 	}
 }

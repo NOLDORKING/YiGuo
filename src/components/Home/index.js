@@ -19,7 +19,8 @@ class Home extends Component{
 	  	pro_list_4:null,
 	  	pro_list_5:null,
 	  	pro_list_6:null,
-	  	pro_li_list:null
+	  	pro_list_7:null,
+	  	pro_li_list:[]
 
 	  };
 	}
@@ -333,14 +334,39 @@ class Home extends Component{
 				  :null
 			}
 			</div>
-		{/*img----7*/}	
-			<div className={css.ws_img_7}>	
+		{/*img----8*/}	
+			<div className={css.ws_img_8}>	
 				<img src="//img10.yiguoimg.com/d/items/2018/181201/9288734857569665_1125x408.jpg?w=1125&amp;h=408" alt=""/>
 			</div>	
 		{/*图片结束之后有个列表*/}
-			<ul>
-				
+			<div className={css.li_list}>
+				<ul>
+				{
+					this.state.pro_li_list.map(item=>
+					<li>
+						<div className={css.li_left}>
+							<img src={item.pictureUrl} alt=""/>
+						</div>
+						<div className={css.li_right}>
+							<p className={css.p1}>{item.commodityName}</p>
+							<p className={css.p2}>{item.subTitle}</p>
+							<p className={css.p3}>{item.saleSlogan}</p>
+							<p className={css.p4}><span className={css.price_word}>￥{item.commodityPrice}</span><span className={css.price_kg}>{item.commoditySpec}</span></p>
+						</div>	
+					</li>
+				)
+				}				
 			</ul>
+			</div>
+		{/*新鲜水果*/}	
+			<div className={css.fruit}>
+				<div className={css.fruit_title}>
+					<p>新鲜水果</p>
+				</div>
+				<ul>
+					
+				</ul>
+			</div>
 		{/*底部辅助块*/}
 			<div className={css.help}></div>
 			</div>
@@ -375,8 +401,9 @@ class Home extends Component{
 	 			pro_list_3:res.data.data.template.componentList[3].componentCommoditys,
 	 			pro_list_4:res.data.data.template.componentList[4].componentCommoditys,
 	 			pro_list_5:res.data.data.template.componentList[5].componentCommoditys,
-	 			pro_list_6:res.data.data.template.componentList[6].componentCommoditys
-	 			
+	 			pro_list_6:res.data.data.template.componentList[6].componentCommoditys,
+	 			pro_list_7:res.data.data.template.componentList[7].componentCommoditys,
+	 			pro_li_list:res.data.data.template.componentList[11].componentCommoditys
 	 		},()=>{
 	 			 var swiper = new Swiper('.ws_a', {
 				      slidesPerView: 1,
